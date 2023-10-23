@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Cursos{% endblock%}
+
+{% load static %}
+
+
+{% block class %} 
+<script src="{% static 'js/cursos.js' %}" type="module"></script>
+{% endblock %}
+
+
+{% block encabezado %}
+
+<h1>Cursos disponibles</h1>
+<input type="text" id="buscar" name="buscar" placeholder="buscar cursos..." >
+<button  onclick="search()">Buscar </button>
+
+{% endblock %}
+
+
+{% block contenido %}
+    <main>
+        <div  id="principal">
+            <section>
+                <h2>Listado de Cursos</h2>
+               <div class="cardbox">
+                <ul  id="prueba">
+                    
+                    <cursos-lista id="cursos-lista" class="grid-container"></cursos-lista>
+                </ul></div>
+            </section>
+            <div id="openModal" class="modalbg">
+                <div class="dialog">
+                  <a href="#close" title="Close" class="close">X</a>
+                  <popup id="popup"></popup>
+                </div>
+              </div></div>
+        </div>
+
+        <div id="secundario">
+            <cursos-selecionado id="cursos-selecionado"></cursos-selecionado>
+          </div>
+    </main>
+    <script src="{% static 'js/funciones.js' %}"></script>
+{% endblock %}
