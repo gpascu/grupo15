@@ -12,7 +12,8 @@ from datetime import datetime
 from django.contrib.auth.models import User #agregado 22 octubre
 from django.contrib import messages #AGREGADO 22 OCTUBRE
 from .forms import UserRegistrationForm#agregado 22 octubre
-
+from .models import ContactMessage#agregado 23 octubre
+from .forms import ContactoForm#agregado 23 octubre
 
 def index(request):
     current_date = datetime.now()
@@ -75,7 +76,22 @@ def registro(request):
         form = UserRegistrationForm()
     return render(request, 'registro.html', {'form': form})
 #----------fin22 octubre
-
+#inicio 23 octubre contacto form
+def contact(request):
+    if request.method == 'POST':
+        form = ContactoForm(request.POST)
+        if form.is_valid():
+            nombre = form.cleaned_data['nombre']
+            email = form.cleaned_data['email']
+            telefono = form.cleaned_data['telefono']
+            mensaje = form.cleaned_data['mensaje']
+            contact_message = ContactMessage(nombre=nombre, email=email, telefono=telefono, mensaje=mensaje)
+            contact_message.save()
+            return redirect('contact')  # Replace 'success_page' with the name of the success page
+    else:
+        form = ContactoForm()
+    return render(request, 'contacto.html', {'contacto_form': form})
+#fin 23 octubre
 
 def user_login(request):
     # Gestiona la logica de login

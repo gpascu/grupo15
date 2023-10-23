@@ -46,5 +46,5 @@ class UserRegistrationForm(forms.Form):
 class ContactoForm(forms.Form):
     nombre = forms.CharField(label='Nombre',  required=True)
     email = forms.EmailField(label='Correo Electrónico',  required=True)
-    telefono = forms.CharField(label='Telefono:', required=True)
-    mensaje = forms.CharField(label='mensaje:', widget=forms.TextInput(attrs={'class': 'mensaje_form'}),  required=True)
+    telefono = forms.CharField(label='Telèfono:', required=True)
+    mensaje = forms.CharField(label='Mensaje:', widget=forms.TextInput(attrs={'class': 'mensaje_form'}),  required=True)
